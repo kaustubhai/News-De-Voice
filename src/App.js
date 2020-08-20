@@ -4,10 +4,13 @@ import NewsCards from './components/newsCards/newsCards'
 import './App.css';
 import useStyles from './styles';
 import wordsToNumbers from 'words-to-numbers'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 const AlanKey = "738cc0c520d23155366b2e22f0de50362e956eca572e1d8b807a3e2338fdd0dc/stage";
 
-const App = () => {
+  const App = () => {
 
   const [articles, setArticles] = useState([]);
   const [active, setActive] = useState(-1);
@@ -35,6 +38,11 @@ const App = () => {
       })
     })
   }, [])
+  
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  })
 
   return (
     <div className="container">
