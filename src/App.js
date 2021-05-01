@@ -6,7 +6,8 @@ import useStyles from './styles';
 import wordsToNumbers from 'words-to-numbers'
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import toastifier from 'toastifier';
+import 'toastifier/dist/toastifier.min.css';
 
 const AlanKey = "738cc0c520d23155366b2e22f0de50362e956eca572e1d8b807a3e2338fdd0dc/stage";
 
@@ -20,7 +21,11 @@ const AlanKey = "738cc0c520d23155366b2e22f0de50362e956eca572e1d8b807a3e2338fdd0d
     alanBtn({
       key: AlanKey,
       onCommand: (({ command, articles, open }) => {
-        if(command === 'newsFromSource'){
+        if (command === 'newsFromSource') {
+          toastifier("Latest News Updated", {
+            styleClass: {
+              background: "#fff12e"
+          }})
           setArticles(articles);
           setActive(-1);
         }
@@ -46,8 +51,11 @@ const AlanKey = "738cc0c520d23155366b2e22f0de50362e956eca572e1d8b807a3e2338fdd0d
 
   return (
     <div className="container">
-      <div className={classes.logoContainer}>
-        <img src="https://alan.app/voice/images/previews/preview.jpg" className={classes.alanLogo} alt="logo" />
+      <div className={classes.topBar}>
+        Powered by AI
+      </div>
+      <div onClick={() => setArticles([])} className={classes.logoContainer}>
+        <img src="/logo.png" className={classes.alanLogo} alt="logo" />
       </div>
       <NewsCards active={active} articles={articles}/>
     </div>

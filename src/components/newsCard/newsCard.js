@@ -9,7 +9,7 @@ const NewsCard = ({ article, i, active }) => {
 
   return (
     <div>
-      <Card data-aos="flip-left" data-aos-delay="200" data-aos-offset="300" data-aos-once="true" data-aos-duration="1000" className={classNames(classes.Card, active === i ? classes.activeCard : null)}>
+      <Card data-aos="zoom-in" data-aos-delay="100" data-aos-once="true" data-aos-duration="500" className={classNames(classes.Card, active === i ? classes.activeCard : null)}>
         <CardActionArea href={article.url} target="_blank">
           <div className={classes.details}>
             <Typography compnent="h2" variant="body2">{new Date(article.publishedAt).toDateString()}</Typography>

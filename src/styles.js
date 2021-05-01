@@ -1,6 +1,21 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  topBar: {
+    backgroundColor: "rgb(3,0,54)",
+    width: "100%",
+    padding: "15px 0",
+    color: "#fff",
+    fontFamily: 'Oxygen, sans-serif',
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    textAlign: "center",
+    fontSize: "1.2em",
+    fontWeight: "500",
+    zIndex: 0,
+    boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px"
+  },
   footer: {
     textAlign: 'center',
     position: 'fixed',
@@ -54,7 +69,9 @@ export default makeStyles((theme) => ({
     },
   },
   logoContainer: {
+    cursor: 'pointer',
     padding: '0 5%',
+    marginTop: "5%",
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
@@ -67,8 +84,8 @@ export default makeStyles((theme) => ({
   alanLogo: {
     height: '27vmin',
     borderRadius: '15%',
-    padding: '0 5%',
-    margin: '3% 0',
+    padding: '0',
+    boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
     [theme.breakpoints.down('sm')]: {
       height: '35vmin',
     },

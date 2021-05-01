@@ -16,6 +16,8 @@ export default makeStyles({
     justifyContent: 'space-between',
     borderBottom: '10px solid white',
     height: '100%',
+    position: "relative",
+    zIndex: -100
   },
   activeCard: {
     borderBottom: '10px solid #22289a',

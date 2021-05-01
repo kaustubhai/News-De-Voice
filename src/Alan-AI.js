@@ -1,16 +1,14 @@
 intent('what does this app do?', 'how can you help?', 'Give insructions to use?', reply('This is a voice supported News Application specifically for visually impaired'));
-intent('hello', reply(`(Hello | Hey there!)`));
-intent('How are you', reply('Doing Fine Thank You'));
 intent('Who Developed you?', reply('I was developed by Kaustubh'))
 intent('What do you do', reply('I give you news you ask for, try saying give me latest news'))
-intent('How to use it',  reply('Ask for whatever news you want or refer to the cards on the homepage'))
+intent('How to use (it| this website|)',  reply('Just say things like above to help me fetch you latest news'))
 
 
 const API = '7f65b9be314649eebf1dc72b7b94e3d7';
 let savedArticles = [];
 
 //news from source
-intent('Give me news from $(source* (.*))', (p) => {
+intent('Give me (latest|) news from $(source* (.*))', (p) => {
     let API_URL_SOURCE = `http://newsapi.org/v2/top-headlines?apiKey=${API}`;
     
     if(p.source.value){
@@ -22,13 +20,13 @@ intent('Give me news from $(source* (.*))', (p) => {
         const { articles } = JSON.parse(body);
         
         if(articles.length === 0){
-            p.play("Sorry, try some different news source");
+            p.play(`Sorry got no news about ${p.categories.value}`);
             return;
         }
     
     savedArticles = articles;
     p.play({command: 'newsFromSource', articles});
-    p.play(`Here are some (latest|recent|fresh) news from ${p.source.value}`)
+    p.play(`Here are some (latest|recent|fresh|) news from ${p.source.value}`)
         
     p.play("Would you like me to read the headlines?");
     p.then(confirmation);
@@ -49,7 +47,7 @@ intent('What\'s up with $(terms* (.*))', (p) => {
         const { articles } = JSON.parse(body);
         
         if(articles.length === 0){
-            p.play("Sorry, try searching for something else");
+            p.play(`Sorry got no news about ${p.categories.value}`);
             return;
         }
     
@@ -79,7 +77,7 @@ intent(`Give me (latest|recent) news (about|) $(categories* (.*))`, (p) => {
         const { articles } = JSON.parse(body);
         
         if(articles.length === 0){
-            p.play('Sorry try searching for something else');
+            p.play(`Sorry got no news about ${p.categories.value}`);
             return;
         }
     
@@ -87,7 +85,7 @@ intent(`Give me (latest|recent) news (about|) $(categories* (.*))`, (p) => {
     p.play({command: 'newsFromSource', articles});
         
     if(p.categories.value){
-        p.play(`Here are some (latest|recent|fresh) news related to ${p.categories.value}`)
+        p.play(`Here are some (latest|recent|fresh|) news related to ${p.categories.value}`)
     }
     else{
         p.play(`Here are some latest|fresh|recent news`);
