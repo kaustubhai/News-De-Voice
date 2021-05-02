@@ -9,7 +9,7 @@ import "aos/dist/aos.css";
 import toastifier from 'toastifier';
 import 'toastifier/dist/toastifier.min.css';
 
-const AlanKey = "738cc0c520d23155366b2e22f0de50362e956eca572e1d8b807a3e2338fdd0dc/stage";
+const AlanKey = process.env.REACT_APP_ALAN_KEY;
 
   const App = () => {
 

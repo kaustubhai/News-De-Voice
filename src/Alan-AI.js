@@ -4,7 +4,7 @@ intent('What do you do', reply('I give you news you ask for, try saying give me 
 intent('How to use (it| this website|)',  reply('Just say things like above to help me fetch you latest news'))
 
 
-const API = '7f65b9be314649eebf1dc72b7b94e3d7';
+const API = process.env.REACT_APP_NEWS_API_KEY;
 let savedArticles = [];
 
 //news from source
