@@ -1,5 +1,5 @@
 import useStyles from './styles'
-import { Grid, Grow, Typography } from '@material-ui/core';
+import { Grid, Grow } from '@material-ui/core';
 import NewsCard from '../newsCard/newsCard'
 import React from 'react'
 
